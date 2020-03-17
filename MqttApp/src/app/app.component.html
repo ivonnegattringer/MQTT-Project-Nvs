@@ -8,11 +8,24 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MFQPaN3Slws" 
-frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<video width="560" height="315" controls>
-  <source src="https://www.youtube.com/embed/MFQPaN3Slws" type="video/mp4" />  
 
-  <!-- The fallback in case the browser doesn't recognize the HTML5 video tag -->  
-</video>
+<mat-tab-group color="primary">
+  <mat-tab label="Video">
+    <div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MFQPaN3Slws" 
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <video width="560" height="315" controls>
+        <source src="https://www.youtube.com/embed/MFQPaN3Slws" type="video/mp4" />  
+      
+        <!-- The fallback in case the browser doesn't recognize the HTML5 video tag -->  
+      </video>
+    </div>
+  </mat-tab>
+  <mat-tab label="Controls"> 
+    <mat-slide-toggle [checked]="lightOn">Light</mat-slide-toggle>  
+  </mat-tab>
+</mat-tab-group>
 
+
+
+<button mat-button color="primary">yeet</button>
