@@ -8,11 +8,13 @@ import { MatSelectModule } from '@angular/material';
 import { MaterialModule } from './material.module';
 import { CameraComponent } from './camera/camera.component';
 import {WebcamModule} from 'ngx-webcam';
+import { OptionsComponent } from './options/options.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CameraComponent
+    CameraComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,
