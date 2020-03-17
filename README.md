@@ -1,4 +1,4 @@
 # MQTT-Project-Nvs
 
-/house/front/door/bell
-/house/front/door/light
+/house/front/door/bell  - "ring"  
+/house/front/door/light - "on"/"off"
