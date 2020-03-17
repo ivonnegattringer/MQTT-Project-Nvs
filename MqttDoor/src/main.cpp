@@ -10,7 +10,7 @@ const char* ssid = "Honor 8X";
 const char* password =  "i2e45678";
 
 //MQTT
-const char* mqtt_server = "YOUR_MQTT_BROKER_IP_ADDRESS";
+const char* mqtt_server = "192.168.43.23";
 WiFiClient espClient;
 PubSubClient client(espClient);
 void callback(char* topic, byte* message, unsigned int length);
@@ -87,9 +87,7 @@ void loop() {
 
 
   Serial.println("Ring one time");
-  client.publish("/house/front/door/bell", "ring");
+  //client.publish("/house/front/door/bell", "ring");
 
-
-  delay(500000);
 }
 

@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define your application's custom theme.
+$myTheme-primary: mat-palette($mat-yellow);
+$myTheme-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$my-theme: mat-light-theme($myTheme-primary, $myTheme-accent);
+
+// Include theme styles for Angular Material components.
+@include angular-material-theme($my-theme);
+
+//"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
