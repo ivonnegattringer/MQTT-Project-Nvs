@@ -1,37 +1,38 @@
-import { Component } from '@angular/core';
-import * as mqtt from 'mqtt';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { IMqttMessage, MqttService } from 'ngx-mqtt';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
   title = 'MqttApp';
   lightOn = false;
   doorOpen = false;
   cameraOn = false;
 
- /* var client = mqttt.connect('mqtt://test.mosquitto.org')
+  topics : Array<string> = ["/htl/4ahif/house/front/door/bell", 
+                            "/htl/4ahif/house/front/door/light",
+                            "/htl/4ahif/house/front/door/door",
+                            "/htl/4ahif/house/front/door/camera"]
 
-    client.on('connect', function () {
-      client.subscribe('presence', function (err) {
-        if (!err) {
-          client.publish('presence', 'Hello mqtt')
-        }
-      })
-    })
+  constructor(private mqttService : MqttService){}
 
-    client.on('message', function (topic, message) {
-      // message is Buffer
-      console.log(message.toString())
-      client.end()
-    })*/
+  ngOnInit() {}
+
+  ngOnDestroy() {}
+
+
 
   lightClick() {
-    var message= "off"
+    console.log("Test")
     if(this.lightOn){
-      message = "on"
+      this.mqttService.unsafePublish(this.topics[1], "on", {qos: 1, retain: false})
     }
+    else{
+      this.mqttService.unsafePublish(this.topics[1], "off", {qos: 1, retain: false})
+    }
+    
   }
 }
