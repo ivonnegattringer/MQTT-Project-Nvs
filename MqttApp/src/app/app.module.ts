@@ -10,6 +10,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { IMqttMessage, MqttModule, IMqttServiceOptions } from "ngx-mqtt";
 
 @NgModule({
   declarations: [
