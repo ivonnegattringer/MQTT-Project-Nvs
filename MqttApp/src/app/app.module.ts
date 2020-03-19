@@ -11,6 +11,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { IMqttMessage, MqttModule, IMqttServiceOptions } from "ngx-mqtt";
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
 
 export const MQTT_OPTIONS : IMqttServiceOptions = {
   hostname: 'broker.hivemq.com',
@@ -28,9 +32,13 @@ export const MQTT_OPTIONS : IMqttServiceOptions = {
     MatSliderModule,
     MatButtonModule,
     AppRoutingModule,
+    MatCardModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
-    MqttModule.forRoot(MQTT_OPTIONS)
+    MqttModule.forRoot(MQTT_OPTIONS),
+    MatToolbarModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
