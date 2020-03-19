@@ -9,6 +9,8 @@ import * as mqtt from 'mqtt';
 export class AppComponent {
   title = 'MqttApp';
   lightOn = false;
+  doorOpen = false;
+  cameraOn = false;
 
  /* var client = mqttt.connect('mqtt://test.mosquitto.org')
 
