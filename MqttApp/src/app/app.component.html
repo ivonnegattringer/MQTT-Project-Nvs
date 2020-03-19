@@ -6,28 +6,51 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Haustür</span>
+  </mat-toolbar-row>
 
+ <!--<mat-toolbar-row>
+    <span>Second Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+  </mat-toolbar-row>
 
+  <mat-toolbar-row>
+    <span>Third Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+  </mat-toolbar-row>--> 
+</mat-toolbar>
 
-<mat-tab-group color="primary">
-  <mat-tab label="Video">
-    <div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/MFQPaN3Slws" 
-      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <video width="560" height="315" controls>
-        <source src="https://www.youtube.com/embed/MFQPaN3Slws" type="video/mp4" />  
-      
-        <!-- The fallback in case the browser doesn't recognize the HTML5 video tag -->  
-      </video>
-    </div>
-  </mat-tab>
-  <mat-tab label="Controls"> 
-    <mat-slide-toggle [checked]="lightOn">Light</mat-slide-toggle>  
-    <mat-slide-toggle [checked]="doorOpen">Door</mat-slide-toggle>
-    <mat-slide-toggle [checked]="cameraOn">Camera</mat-slide-toggle>
-  </mat-tab>
-</mat-tab-group>
-
+<div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/MFQPaN3Slws" 
+  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <video width="560" height="315" controls>
+    <source src="https://www.youtube.com/embed/MFQPaN3Slws" type="video/mp4" />  
+  
+    <!-- The fallback in case the browser doesn't recognize the HTML5 video tag -->  
+  </video>
+</div>
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <mat-slide-toggle [checked]="lightOn">Light</mat-slide-toggle>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-slide-toggle [checked]="doorOpen">Door</mat-slide-toggle>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-slide-toggle [checked]="cameraOn">Camera</mat-slide-toggle>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
 
 
 <button mat-raised-button color="primary">yeet</button>
