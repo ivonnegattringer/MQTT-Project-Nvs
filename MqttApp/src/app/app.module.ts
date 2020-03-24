@@ -18,7 +18,8 @@ import {MatListModule} from '@angular/material/list';
 
 export const MQTT_OPTIONS : IMqttServiceOptions = {
   hostname: 'broker.hivemq.com',
-  port: 1883
+  port: 8000,
+  path: '/mqtt'
 }
 
 @NgModule({

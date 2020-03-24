@@ -38,11 +38,11 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item>
-        <mat-slide-toggle [checked]="lightOn">Light</mat-slide-toggle>
+        <mat-slide-toggle [checked]="lightOn" (change)="lightClick()">Light</mat-slide-toggle>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <mat-slide-toggle [checked]="doorOpen">Door</mat-slide-toggle>
+        <mat-slide-toggle [checked]="doorOpen" (change)="doorClick()">Door</mat-slide-toggle>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
