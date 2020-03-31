@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import * as mqtt from 'mqtt';
 
 @Component({
   selector: 'app-root',

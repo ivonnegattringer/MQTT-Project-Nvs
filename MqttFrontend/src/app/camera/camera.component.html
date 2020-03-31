@@ -1,6 +1,9 @@
 <div style="text-align:center">
     <div>
-        <webcam [height]="400" [width]="1200" *ngIf="showWebcam"></webcam>
-        <br/>
+        <!--<webcam [height]="400" [width]="1200" *ngIf="showWebcam"></webcam> -->
+        <video width="600" height="400" controls>  *ngIf="showWebcam"
+            <source src="https://www.youtube.com/embed/MFQPaN3Slws" type="video/mp4" />
+          </video>
+        <br><br><br>
     </div>
 </div>

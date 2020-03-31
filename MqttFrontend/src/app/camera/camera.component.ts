@@ -13,10 +13,6 @@ export class CameraComponent implements OnInit {
     public deviceId: string;
 
     public ngOnInit(): void {
-       /*  WebcamUtil.getAvailableVideoInputs()
-        .then((mediaDevice: MediaDeviceInfo[]) => {
-            this.webcamAvailable = mediaDevice && mediaDevice.length > 1;
-        });*/
     }
 
     public toggleWebcam(): void {
