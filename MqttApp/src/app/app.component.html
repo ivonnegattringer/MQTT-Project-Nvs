@@ -1,28 +1,8 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>Haustür</span>
   </mat-toolbar-row>
 
- <!--<mat-toolbar-row>
-    <span>Second Line</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <span>Third Line</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
-  </mat-toolbar-row>--> 
 </mat-toolbar>
 
 <div>
@@ -38,19 +18,17 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item>
-        <mat-slide-toggle [checked]="lightOn" (change)="lightClick()">Light</mat-slide-toggle>
+        <mat-slide-toggle labelPosition="after" [checked]="lightOn" (change)="lightonClick()">Light</mat-slide-toggle>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <mat-slide-toggle [checked]="doorOpen" (change)="doorClick()">Door</mat-slide-toggle>
+        <mat-slide-toggle labelPosition="after" [checked]="doorOpen" (change)="dooronClick()">Door</mat-slide-toggle>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <mat-slide-toggle [checked]="cameraOn">Camera</mat-slide-toggle>
+        <mat-slide-toggle labelPosition="after" [checked]="cameraOn" (change)="cameraOnClick()">Camera</mat-slide-toggle>
       </mat-list-item>
     </mat-list>
+    <button mat-raised-button color="primary">Läuten</button>
   </mat-card-content>
 </mat-card>
-
-
-<button mat-raised-button color="primary">yeet</button>

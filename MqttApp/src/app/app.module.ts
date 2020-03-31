@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table'; 
 
 export const MQTT_OPTIONS : IMqttServiceOptions = {
   hostname: 'broker.hivemq.com',
@@ -33,8 +34,8 @@ export const MQTT_OPTIONS : IMqttServiceOptions = {
     MatSliderModule,
     MatButtonModule,
     AppRoutingModule,
+    MatTableModule,
     MatCardModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     MqttModule.forRoot(MQTT_OPTIONS),
     MatToolbarModule,

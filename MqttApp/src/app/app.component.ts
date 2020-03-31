@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IMqttMessage, MqttService } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,22 @@ export class AppComponent implements OnInit, OnDestroy{
   doorOpen = false;
   cameraOn = false;
 
-  topics : Array<string> = ["/htl/4ahif/house/front/door/bell", 
-                            "/htl/4ahif/house/front/door/light",
-                            "/htl/4ahif/house/front/door/door",
-                            "/htl/4ahif/house/front/door/camera"]
+  topics = {
+    bell:"/htl/4ahif/house/front/door/bell",
+    light:"/htl/4ahif/house/front/door/light",
+    door:"/htl/4ahif/house/front/door/door",
+    camera:"/htl/4ahif/house/front/door/camera"
+ }
+
   private subscription: Subscription;
 
   constructor(private mqttService : MqttService){}
 
   ngOnInit() {
-    this.topics.forEach(topic => {
-      this.subscribeNewTopic(topic)
-    });
+    this.subscribeNewTopic(this.topics.bell)
+    this.subscribeNewTopic(this.topics.camera)
+    this.subscribeNewTopic(this.topics.door)
+    this.subscribeNewTopic(this.topics.light)
   }
 
   ngOnDestroy() {}
@@ -36,9 +41,10 @@ export class AppComponent implements OnInit, OnDestroy{
       console.log('Message: ' + msg + ' for topic: ' + message.topic);
 
       switch(topic){
-        case this.topics[0]:
+        case this.topics.bell:
+          //TODO turn camera on
           break;
-        case this.topics[1]:
+        case this.topics.light:
             if(msg.toUpperCase().localeCompare("ON") == 0){
               this.lightOn = true;
             }
@@ -46,26 +52,59 @@ export class AppComponent implements OnInit, OnDestroy{
               this.lightOn = false;
             }
           break; 
+        case this.topics.camera:
+          if(msg.toUpperCase().localeCompare("ON") == 0){
+            this.cameraOn = true;
+          }
+          else{
+            this.cameraOn = false;
+          }
+          break;
+        case this.topics.door:
+          if(msg.toUpperCase().localeCompare("OPEN") == 0){
+            this.doorOpen = true;
+          }
+          else{
+            this.doorOpen = false;
+          }
+          break;
       }
     });
 
     console.log('subscribed to topic: ' + topic)
   }
 
-  lightClick() {
+  simplePublish(topic:String, message:String){
+    this.mqttService.unsafePublish(topic.toString(), message.toString(), {qos: 0, retain: false})
+  }
+
+  lightonClick() {
     this.lightOn = !this.lightOn;
     if(this.lightOn){
-      console.log("on");
-      this.mqttService.unsafePublish(this.topics[1], "on", {qos: 0, retain: false})
+      this.simplePublish(this.topics.light, "on")
     }
     else{
-      console.log("off");
-      this.mqttService.unsafePublish(this.topics[1], "off", {qos: 0, retain: false})
+      this.simplePublish(this.topics.light, "off")
     }
     
   }
 
-  doorClick(){
-    
+  dooronClick(){
+    this.doorOpen = !this.doorOpen;
+    if(this.doorOpen){
+      this.simplePublish(this.topics.door, "open")
+    }
+    else{
+      this.simplePublish(this.topics.door, "close")
+    }
+  }
+  cameraOnClick(){
+    this.cameraOn = !this.cameraOn;
+    if(this.cameraOn){
+      this.simplePublish(this.topics.camera, "on")
+    }
+    else{
+      this.simplePublish(this.topics.camera, "off")
+    }
   }
 }
