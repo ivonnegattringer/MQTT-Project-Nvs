@@ -9,6 +9,14 @@ import { MaterialModule } from './material.module';
 import { CameraComponent } from './camera/camera.component';
 import {WebcamModule} from 'ngx-webcam';
 import { OptionsComponent } from './options/options.component';
+import { MqttModule, IMqttServiceOptions  } from "ngx-mqtt";
+import {MatIconModule} from '@angular/material/icon';
+
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'broker.hivemq.com',
+  port: 8000,
+  path: '/mqtt'
+}
 
 @NgModule({
   declarations: [
@@ -22,7 +30,9 @@ import { OptionsComponent } from './options/options.component';
     BrowserAnimationsModule,
     MatSelectModule,
     MaterialModule,
-    WebcamModule
+    WebcamModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
