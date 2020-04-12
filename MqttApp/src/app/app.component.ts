@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IMqttMessage, MqttService } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
+import { PwaService } from './pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,11 @@ export class AppComponent implements OnInit, OnDestroy{
 
   private subscription: Subscription;
 
-  constructor(private mqttService : MqttService){}
+  constructor(private mqttService : MqttService, public Pwa: PwaService){}
+
+  installPwa(): void {
+    this.Pwa.promptEvent.prompt();
+  }
 
   ngOnInit() {
     this.subscribeNewTopic(this.topics.bell)
@@ -41,9 +46,7 @@ export class AppComponent implements OnInit, OnDestroy{
       console.log('Message: ' + msg + ' for topic: ' + message.topic);
 
       switch(topic){
-        case this.topics.bell:
-          //TODO turn camera on
-          break;
+      
         case this.topics.light:
             if(msg.toUpperCase().localeCompare("ON") == 0){
               this.lightOn = true;
