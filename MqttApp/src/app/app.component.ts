@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IMqttMessage, MqttService } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
-import { PwaService } from './pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -24,11 +23,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   private subscription: Subscription;
 
-  constructor(private mqttService : MqttService, public Pwa: PwaService){}
-
-  installPwa(): void {
-    this.Pwa.promptEvent.prompt();
-  }
+  constructor(private mqttService : MqttService){}
 
   ngOnInit() {
     this.subscribeNewTopic(this.topics.bell)
