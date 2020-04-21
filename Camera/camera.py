@@ -34,7 +34,7 @@ client.connect("broker.hivemq.com", 1883)
 
 client.subscribe("/htl/4ahif/house/front/door/camera")
 client.subscribe("/htl/4ahif/house/front/door/bell")
-print("connsected to broker")
+print("connected to broker")
 client.on_message = handle
 client.loop_start()
 print("client started")
