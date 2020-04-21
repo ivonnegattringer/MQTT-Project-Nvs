@@ -6,29 +6,27 @@ import time
 
 def handle(client, userdata, message):
     topic = str(message.topic)
-    print("handle")
     message = str(message.payload.decode("utf-8"))
     if(topic == "/htl/4ahif/house/front/door/camera"):
-        print("cam")
         if (message == "on"):
-            print("on")
+            print("recieved message: camera on")
             os.system("sudo service motion start")
             #subprocess.run(["ls","-la"])
             #subprocess.run(["sudo","service","motion","start"])
-            print("stream on")
+            print("stream is on")
         elif (message == "off"):
-            print("off")
+            print("recieved message: camera off")
             os.system("sudo service motion stop")
             #subprocess.run(["sudo","service","motion","stop"])
-            print("stream off")
+            print("stream is off")
         else:
             return
     elif(topic == "/htl/4ahif/house/front/door/bell"):
-        print("bell")
+        print("recieved message from bell")
         if(message == "ring"):
             os.system("sudo service motion start")
             #subprocess.run(["sudo","service","motion","start"])
-            print("ring")
+            print("stream is on")
 
 client = mqtt.Client("haustuer")
 
@@ -36,11 +34,9 @@ client.connect("broker.hivemq.com", 1883)
 
 client.subscribe("/htl/4ahif/house/front/door/camera")
 client.subscribe("/htl/4ahif/house/front/door/bell")
-print("test")
+print("connsected to broker")
 client.on_message = handle
 client.loop_start()
-print("test2")
+print("client started")
 while(1):
-    #client.publish("/htl/4ahif/house/front/door/camera","on")
     time.sleep(1)
-#https://www.digikey.com/en/maker/blogs/2019/how-to-use-mqtt-with-the-raspberry-pi
