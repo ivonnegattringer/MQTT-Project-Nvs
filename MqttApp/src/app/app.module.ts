@@ -28,6 +28,7 @@ export const MQTT_OPTIONS : IMqttServiceOptions = {
     AppComponent
   ],
   imports: [
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserModule,
     MatSlideToggleModule,
     MatTabsModule,

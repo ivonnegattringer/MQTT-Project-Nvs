@@ -41,9 +41,7 @@ export class AppComponent implements OnInit, OnDestroy{
       console.log('Message: ' + msg + ' for topic: ' + message.topic);
 
       switch(topic){
-        case this.topics.bell:
-          //TODO turn camera on
-          break;
+      
         case this.topics.light:
             if(msg.toUpperCase().localeCompare("ON") == 0){
               this.lightOn = true;
