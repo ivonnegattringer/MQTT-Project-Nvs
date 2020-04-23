@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   simplePublish(topic:String, message:String){
-    this.mqttService.unsafePublish(topic.toString(), message.toString(), {qos: 0, retain: false})
+    this.mqttService.unsafePublish(topic.toString(), message.toString(), {qos: 0, retain: true})
   }
 
   lightonClick() {
@@ -96,13 +96,19 @@ export class AppComponent implements OnInit, OnDestroy{
       this.simplePublish(this.topics.door, "close")
     }
   }
-  cameraOnClick(){
+  async cameraOnClick(){
     this.cameraOn = !this.cameraOn;
     if(this.cameraOn){
       this.simplePublish(this.topics.camera, "on")
+      this.delay(5000).then(()=>
+          window.location.reload()
+      )
     }
     else{
       this.simplePublish(this.topics.camera, "off")
     }
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }
