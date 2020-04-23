@@ -100,8 +100,9 @@ export class AppComponent implements OnInit, OnDestroy{
     this.cameraOn = !this.cameraOn;
     if(this.cameraOn){
       this.simplePublish(this.topics.camera, "on")
-      await this.delay(5000);
-      window.location.reload()
+      this.delay(5000).then(()=>
+          window.location.reload()
+      )
     }
     else{
       this.simplePublish(this.topics.camera, "off")
