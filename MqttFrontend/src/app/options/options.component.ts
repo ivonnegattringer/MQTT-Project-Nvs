@@ -30,31 +30,31 @@ export class OptionsComponent implements OnInit {
 
   openDoor(){
     console.log("Door opened");
-    this.mqttService.unsafePublish(this.topics[2], "on", {qos: 0, retain: false});
+    this.mqttService.unsafePublish(this.topics[2], "on", {qos: 0, retain: true});
     this.isDoorOpen = true;
   }
 
   closeDoor(){
     console.log("Door closed");
-    this.mqttService.unsafePublish(this.topics[2], "off", {qos: 0, retain: false});
+    this.mqttService.unsafePublish(this.topics[2], "off", {qos: 0, retain: true});
     this.isDoorOpen = false;
   }
 
   lightOn(){
     this.isLightOn = true;
-    this.mqttService.unsafePublish(this.topics[1], "on", {qos: 0, retain: false});
+    this.mqttService.unsafePublish(this.topics[1], "on", {qos: 0, retain: true});
     console.log("Light on");
   }
 
   lightOff(){
     this.isLightOn = false;
-    this.mqttService.unsafePublish(this.topics[1], "off", {qos: 0, retain: false});
+    this.mqttService.unsafePublish(this.topics[1], "off", {qos: 0, retain: true});
     console.log("Light off");
   }
   
   async cameraOn(){
     this.isCameraOn = true;
-    this.mqttService.unsafePublish(this.topics[3], "on", {qos: 0, retain: false});
+    this.mqttService.unsafePublish(this.topics[3], "on", {qos: 0, retain: true});
     await this.delay(5000);
     window.location.reload()
     console.log("Camera on");
@@ -65,7 +65,7 @@ export class OptionsComponent implements OnInit {
 
   cameraOff(){
     this.isCameraOn = false;
-    this.mqttService.unsafePublish(this.topics[3], "off", {qos: 0, retain: false});
+    this.mqttService.unsafePublish(this.topics[3], "off", {qos: 0, retain: true});
     console.log("Camera off");
   }
 
