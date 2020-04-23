@@ -95,7 +95,7 @@ export class OptionsComponent implements OnInit {
           else this.isDoorOpen = false;
           break;
         case this.topics[3]: //Camera
-          if(mqttMessage.toUpperCase().localeCompare("ON") == 0 && this.isCameraOn != true){
+          if(mqttMessage.toUpperCase().localeCompare("ON")){
             this.isCameraOn = true;
             await this.delay(5000).then(()=>
             window.location.reload())
