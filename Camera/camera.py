@@ -24,9 +24,8 @@ def handle(client, userdata, message):
     elif(topic == "/htl/4ahif/house/front/door/bell"):
         print("recieved message from bell")
         if(message == "ring"):
-            os.system("sudo service motion start")
             #subprocess.run(["sudo","service","motion","start"])
-            print("stream is on")
+            client.publish("/htl/4ahif/house/front/door/camera", "on", 0, true)
 
 client = mqtt.Client("haustuer")
 
