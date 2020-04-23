@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   subscribeNewTopic(topic : string): void {
     console.log('inside subscribe new topic')
-    this.subscription = this.mqttService.observe(topic).subscribe((message: IMqttMessage) => {
+    this.subscription = this.mqttService.observe(topic).subscribe(async (message: IMqttMessage) => {
       let msg  = message.payload.toString();
       console.log('Message: ' + msg + ' for topic: ' + message.topic);
 
@@ -53,6 +53,9 @@ export class AppComponent implements OnInit, OnDestroy{
         case this.topics.camera:
           if(msg.toUpperCase().localeCompare("ON") == 0){
             this.cameraOn = true;
+            await this.delay(5000).then(()=>
+            window.location.reload()
+      )
           }
           else{
             this.cameraOn = false;

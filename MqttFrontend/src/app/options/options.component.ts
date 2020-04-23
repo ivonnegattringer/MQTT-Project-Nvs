@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MqttService, IMqttMessage } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-options',
@@ -20,7 +21,9 @@ export class OptionsComponent implements OnInit {
   "/htl/4ahif/house/front/door/camera"];
   private subscription: Subscription;
 
-  constructor(private mqttService: MqttService) { }
+  constructor(private mqttService: MqttService, private snackBar: MatSnackBar) { 
+    
+  }
 
   ngOnInit() {
     this.topics.forEach(topic => {
@@ -74,9 +77,10 @@ export class OptionsComponent implements OnInit {
       let mqttMessage  = message.payload.toString();
       
       console.log('Message: ' + mqttMessage + ';  Topic: ' + message.topic);
-
+      
       switch(topic){
         case this.topics[0]: //Bell
+        this.snackBar.open("Somebody is at the door!"," ", {duration: 5000});
           break;
         case this.topics[1]: //Light
             if(mqttMessage.toUpperCase().localeCompare("ON") == 0){

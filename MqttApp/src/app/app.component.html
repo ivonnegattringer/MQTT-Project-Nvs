@@ -5,7 +5,7 @@
 
 </mat-toolbar>
 
-<div style="text-align:center">
+<div style="text-align:center" [hidden]="!cameraOn">
   <img style="-webkit-user-select: none;margin: auto;" src="http://192.168.1.64:8081/" width="560" height="315">
 </div>
 <mat-card>
@@ -23,6 +23,6 @@
         <mat-slide-toggle labelPosition="after" [checked]="cameraOn" (change)="cameraOnClick()">Camera</mat-slide-toggle>
       </mat-list-item>
     </mat-list>
-    <!--<button mat-raised-button color="primary">Läuten</button>-->
+    
   </mat-card-content>
 </mat-card>
