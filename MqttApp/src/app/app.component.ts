@@ -96,13 +96,22 @@ export class AppComponent implements OnInit, OnDestroy{
       this.simplePublish(this.topics.door, "close")
     }
   }
-  cameraOnClick(){
+  async cameraOnClick(){
     this.cameraOn = !this.cameraOn;
     if(this.cameraOn){
       this.simplePublish(this.topics.camera, "on")
+      console.log('before: ' + this.cameraOn)
+      await this.delay(5000);
+      localStorage.setItem("cameraOn", String(this.cameraOn))
+      window.location.reload()
+      localStorage.getItem("cameraOn")
+      console.log("after: " + this.cameraOn)
     }
     else{
       this.simplePublish(this.topics.camera, "off")
     }
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }

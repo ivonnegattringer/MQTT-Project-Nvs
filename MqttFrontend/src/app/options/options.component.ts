@@ -52,10 +52,15 @@ export class OptionsComponent implements OnInit {
     console.log("Light off");
   }
   
-  cameraOn(){
+  async cameraOn(){
     this.isCameraOn = true;
     this.mqttService.unsafePublish(this.topics[3], "on", {qos: 0, retain: false});
+    await this.delay(5000);
+    window.location.reload()
     console.log("Camera on");
+  }
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   cameraOff(){
