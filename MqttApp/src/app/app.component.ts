@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy{
             }
           break; 
         case this.topics.camera:
-          if(msg.toUpperCase().localeCompare("ON") == 0){
+          if(msg.toUpperCase().localeCompare("ON") == 0 && this.cameraOn != true){
             this.cameraOn = true;
             await this.delay(5000).then(()=>
             window.location.reload()

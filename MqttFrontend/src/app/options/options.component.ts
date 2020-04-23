@@ -73,7 +73,7 @@ export class OptionsComponent implements OnInit {
   }
 
   subscribeTopic(topic: string) {
-    this.subscription = this.mqttService.observe(topic).subscribe((message: IMqttMessage) => {
+    this.subscription = this.mqttService.observe(topic).subscribe(async (message: IMqttMessage) => {
       let mqttMessage  = message.payload.toString();
       
       console.log('Message: ' + mqttMessage + ';  Topic: ' + message.topic);
@@ -95,8 +95,10 @@ export class OptionsComponent implements OnInit {
           else this.isDoorOpen = false;
           break;
         case this.topics[3]: //Camera
-          if(mqttMessage.toUpperCase().localeCompare("ON") == 0){
+          if(mqttMessage.toUpperCase().localeCompare("ON") == 0 && this.isCameraOn != true){
             this.isCameraOn = true;
+            await this.delay(5000).then(()=>
+            window.location.reload())
           }
           else this.isCameraOn = false;
           break;
