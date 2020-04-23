@@ -1,10 +1,40 @@
-<mat-grid-list cols="4" rowHeight="3:1">
-    <mat-grid-tile>OPEN DOOR</mat-grid-tile>
-    <mat-grid-tile>CLOSE DOOR</mat-grid-tile>
-    <mat-grid-tile> TURN LIGHT ON</mat-grid-tile>
-    <mat-grid-tile>TURN LIGHT OFF</mat-grid-tile>
-    <mat-grid-tile>RING</mat-grid-tile>
-    <mat-grid-tile>TURN CAMERA ON</mat-grid-tile>
-    <mat-grid-tile>TURN CAMERA OFF</mat-grid-tile>
-    <mat-grid-tile>TURN CAMERA OFF</mat-grid-tile>
+<app-camera></app-camera>
+
+<mat-grid-list cols="3" rowHeight="4:1">
+    <mat-grid-tile>
+      <button mat-flat-button (click)="openDoor()">
+        <mat-icon aria-hidden="false" aria-label="door">meeting_room</mat-icon>
+        <br>
+        OPEN DOOR </button>
+      </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button (click)="lightOn()">
+        <mat-icon aria-hidden="false" aria-label="door">wb_incandescent</mat-icon>
+        <br>
+        TURN LIGHT ON</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button (click)="cameraOn()">
+        <mat-icon aria-hidden="false" aria-label="door">videocam</mat-icon>
+        <br>
+        TURN CAMERA ON</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button (click)="closeDoor()">
+        <mat-icon aria-hidden="false" aria-label="door">no_meeting_room</mat-icon>
+        <br>
+        CLOSE DOOR</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button (click)="lightOff()">
+        <mat-icon aria-hidden="false" aria-label="door">power_off</mat-icon>
+        <br>
+        TURN LIGHT OFF</button>
+    </mat-grid-tile>
+    <mat-grid-tile> 
+      <button mat-flat-button (click)="cameraOff()">
+        <mat-icon aria-hidden="false" aria-label="door">videocam_off</mat-icon>
+        <br>
+        TURN CAMERA OFF</button>
+    </mat-grid-tile>
   </mat-grid-list>

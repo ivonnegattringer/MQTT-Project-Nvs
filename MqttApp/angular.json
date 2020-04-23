@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "MqttApp"
+  "defaultProject": "MqttApp",
+  "cli": {
+    "analytics": false
+  }
 }

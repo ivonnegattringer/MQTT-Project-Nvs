@@ -1,31 +1,28 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Haustür</span>
+  </mat-toolbar-row>
 
+</mat-toolbar>
 
-
-<mat-tab-group color="primary">
-  <mat-tab label="Video">
-    <div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/MFQPaN3Slws" 
-      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <video width="560" height="315" controls>
-        <source src="https://www.youtube.com/embed/MFQPaN3Slws" type="video/mp4" />  
-      
-        <!-- The fallback in case the browser doesn't recognize the HTML5 video tag -->  
-      </video>
-    </div>
-  </mat-tab>
-  <mat-tab label="Controls"> 
-    <mat-slide-toggle [checked]="lightOn">Light</mat-slide-toggle>  
-  </mat-tab>
-</mat-tab-group>
-
-
-
-<button mat-button color="primary">yeet</button>
+<div style="text-align:center">
+  <img style="-webkit-user-select: none;margin: auto;" src="http://192.168.1.64:8081/" width="560" height="315">
+</div>
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <mat-slide-toggle labelPosition="after" [checked]="lightOn" (change)="lightonClick()">Light</mat-slide-toggle>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-slide-toggle labelPosition="after" [checked]="doorOpen" (change)="dooronClick()">Door</mat-slide-toggle>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-slide-toggle labelPosition="after" [checked]="cameraOn" (change)="cameraOnClick()">Camera</mat-slide-toggle>
+      </mat-list-item>
+    </mat-list>
+    <button mat-raised-button color="primary">Läuten</button>
+  </mat-card-content>
+</mat-card>

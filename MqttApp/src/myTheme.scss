@@ -4,8 +4,8 @@
 @include mat-core();
 
 // Define your application's custom theme.
-$myTheme-primary: mat-palette($mat-yellow);
-$myTheme-accent:  mat-palette($mat-pink, A200, A100, A400);
+$myTheme-primary: mat-palette($mat-pink);
+$myTheme-accent:  mat-palette($mat-teal,400,600,800);
 
 $my-theme: mat-light-theme($myTheme-primary, $myTheme-accent);
 

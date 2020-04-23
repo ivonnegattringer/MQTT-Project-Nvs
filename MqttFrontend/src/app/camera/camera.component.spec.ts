@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CameraComponent } from './camera.component';
 
 describe('CameraComponent', () => {

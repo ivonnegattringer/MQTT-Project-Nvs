@@ -1,4 +1,12 @@
 mat-grid-tile {
-    background: #85BDBF;
-    
+    background: #040F0F;
+    color: white;
+    box-shadow: 4px 4px 8px 4px rgba(0.2, 0, 0, 0.2), 0 6px 20px 0 rgba(0.19, 0, 0, 0.19);
+  }
+
+  button{
+    width:98%;
+    height: 98%;
+    background: #040F0F;
+    color: white;
   }
