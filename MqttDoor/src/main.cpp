@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
-
+#include <string.h>
 
 const int LEDPIN = 2;
 
@@ -10,10 +10,12 @@ const char* ssid = "Honor 8X";
 const char* password =  "i2e45678";
 
 //MQTT
-const char* mqtt_server = "192.168.43.23";
+const char* mqtt_server = "broker.hivemq.com";
+static boolean bell = false;
 WiFiClient espClient;
 PubSubClient client(espClient);
 void callback(char* topic, byte* message, unsigned int length);
+
 
 
 void setup() {
@@ -38,21 +40,22 @@ void callback(char* topic, byte* message, unsigned int length) {
   Serial.print("Message arrived on topic: ");
   Serial.print(topic);
   Serial.print(". Message: ");
-  String messageTemp;
+  std::string messageTemp;
   
   for (int i = 0; i < length; i++) {
     Serial.print((char)message[i]);
-    messageTemp += (char)message[i];
+    messageTemp += std::toupper((char)message[i]);
   }
   Serial.println();
 
-  if (String(topic) == "/house/front/door/light") {
+  if (String(topic) == "/htl/4ahif/house/front/door/light") {
     Serial.print("Changing output to ");
-    if(messageTemp == "on"){
+
+    if(messageTemp == "ON"){
       Serial.println("on");
       digitalWrite(LEDPIN, HIGH);
     }
-    else if(messageTemp == "off"){
+    else if(messageTemp == "OFF"){
       Serial.println("off");
       digitalWrite(LEDPIN, LOW);
     }
@@ -66,7 +69,7 @@ void reconnect() {
       Serial.println("connected");
 
 
-      client.subscribe("/house/front/door/light");
+      client.subscribe("/htl/4ahif/house/front/door/light");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -87,7 +90,11 @@ void loop() {
 
 
   Serial.println("Ring one time");
-  //client.publish("/house/front/door/bell", "ring");
+  if(!bell){
+    client.publish("/htl/4ahif/house/front/door/bell", "ring");
+    bell = true;
+  }
+  
 
 }
 
