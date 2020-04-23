@@ -100,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.cameraOn = !this.cameraOn;
     if(this.cameraOn){
       this.simplePublish(this.topics.camera, "on")
-      this.delay(5000).then(()=>
+      await this.delay(5000).then(()=>
           window.location.reload()
       )
     }
@@ -108,7 +108,7 @@ export class AppComponent implements OnInit, OnDestroy{
       this.simplePublish(this.topics.camera, "off")
     }
   }
-  delay(ms: number) {
+  async delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }
