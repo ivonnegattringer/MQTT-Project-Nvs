@@ -25,7 +25,7 @@ def handle(client, userdata, message):
         print("recieved message from bell")
         if(message == "ring"):
             #subprocess.run(["sudo","service","motion","start"])
-            client.publish("/htl/4ahif/house/front/door/camera", "on", 0, true)
+            client.publish("/htl/4ahif/house/front/door/camera", "on", 0, True)
 
 client = mqtt.Client("haustuer")
 
